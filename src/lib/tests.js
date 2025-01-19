@@ -17,7 +17,7 @@ export async function test({ data, code, lang }){
 
 async function JavaScript(data, code){
     const duration = 1000
-    const worker = new Worker('./src/workers/testWorker.js')
+    const worker = new Worker(new URL('../workers/testWorker.js', import.meta.url))
     worker.postMessage({ code, data, duration})
 
     return new Promise(resolve => {
